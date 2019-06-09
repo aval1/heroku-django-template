@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'email.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'latofonts.css'%}">
+    <title>Email</title>
+</head>
+<body id="colorChange">
+<h1>Contact Us</h1>
+<div id="contact">
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button type="submit">Send</button>
+        <a href="{% url 'index' %}" id="button">Home</a>
+    </div>
+</form>
+</div>
+</body>
+<script>
+function time(){
+    var colorBox=
+        {
+            1: "#3399FF",
+            2: "#9999FF",
+            3: "#59D259",
+            4: "#FF9D51",
+            5: "D3E2AF",
+            6: "#59D259"
+        };
+	var d = new Date();
+    var day = d.getDate();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    var r = parseInt(s) * 1*s ;
+    var g = parseInt(s) * 2*s/2 ;
+    var b = parseInt(s) * 3*s;
+
+
+    var lowe =Math.round(m/10);
+    var newQuoteText = colorBox[lowe];
+    document.getElementById("colorChange").style.backgroundColor=newQuoteText;
+    document.getElementById("bottomnav").style.backgroundColor=newQuoteText;
+    if(lowe==5||lowe==0){
+    document.getElementById("whiteboy").style.color="white";
+    }
+    console.log(m);
+    console.log(lowe);
+    console.log(newQuoteText);
+    }
+    function checkTime(i) {
+	if (i < 10) {i = "0" + i};
+	return i;
+}
+
+    time();
+</script>
+</html>

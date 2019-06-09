@@ -17,6 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 
+from . import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^home', views.index, name='index'),
+    # ex: /polls/5/
+    url(r'^detail', views.detail, name='detail'),
+    # ex: /polls/5/results/
+    # url(r'^(?P<pk>[\w-]+)/results/', views.ResultsView.as_view(), name='results'),
+    # ex: /polls/5/vote/
+    # url(r'^(?P<question_id>[\w-]+)/vote/', views.vote, name='vote'),
+    url(r'^email', views.emailView, name='email'),
+    url(r'^success', views.successView, name='success')
 ]

@@ -64,7 +64,7 @@ def emailView(request):
                     send_mail(subject, message, from_email, ['andyval4@gmail.com'])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
-                return redirect('home/')
+                return redirect('')
         return render(request, "email.html", {'form': form})
 
 def successView(request):

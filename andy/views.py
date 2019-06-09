@@ -19,12 +19,12 @@ from django.views import generic
 
 def index(request):
 
-    return render(request, 'polls/index.html')
+    return render(request, 'index.html')
 
 
 
 def detail(request):
-    return render(request, 'polls/detail.html')
+    return render(request, 'detail.html')
 
 '''
 class ResultsView(generic.DetailView):
@@ -48,7 +48,7 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return HttpResponseRedirect(reverse('results', args=(question.id,)))
 '''
 
 def emailView(request):
@@ -65,7 +65,7 @@ def emailView(request):
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
                 return redirect('home/')
-        return render(request, "polls/email.html", {'form': form})
+        return render(request, "email.html", {'form': form})
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')

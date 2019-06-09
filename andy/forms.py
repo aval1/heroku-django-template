@@ -1,4 +1,3 @@
-import requests
 from django import forms
 
 class ContactForm(forms.Form):
